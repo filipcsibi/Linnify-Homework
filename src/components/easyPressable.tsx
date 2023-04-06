@@ -11,8 +11,16 @@ import {
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {soto} from '../types/MyPressable.intefrace';
+import {useState} from 'react';
+interface Props {
+  item: soto;
+  onPress: (title: string) => void;
+}
 
-export const MyPressable = () => {
+export const MyPressable = (props: Props) => {
+  const [title, setTitle] = useState('123');
+  const [commend, setCommend] = useState({id: 2, title: 'a534rew'});
   const showAlert = () => {
     Alert.alert('Alerta', 'Nu mai apasa frumosule', [
       {
@@ -23,6 +31,7 @@ export const MyPressable = () => {
       {text: 'OK', onPress: () => console.log('OK Pressed')},
     ]);
   };
+
   const like = () => {
     console.log('LIKE');
   };
@@ -34,11 +43,10 @@ export const MyPressable = () => {
   };
   const Dog = require('../assets/dasda.jpeg');
   const profile = require('../assets/soto.jpg');
-  const onPress = (a: string) => {
-    console.log(a);
-  };
+
   return (
     <Pressable
+      onPress={() => setTitle('awdawd')}
       style={{
         flex: 1,
         flexDirection: 'column',
@@ -48,13 +56,15 @@ export const MyPressable = () => {
           source={profile}
           style={{width: 50, height: 50, margin: 10, borderRadius: 30}}></Image>
         <Text style={{fontSize: 30, fontWeight: 'bold', color: 'black'}}>
-          Filip Csibi
+          {title}
         </Text>
       </View>
       <Pressable
-        onPress={showAlert}
+        onPress={() => props.onPress('titlusdsadasd')}
         style={{backgroundColor: 'blue', height: '50%', width: '100%'}}>
-        <Image source={Dog} style={{height: '100%', width: '100%'}}></Image>
+        <Image
+          source={props.item.image}
+          style={{height: '100%', width: '100%'}}></Image>
       </Pressable>
       <View
         style={{
@@ -62,18 +72,24 @@ export const MyPressable = () => {
         }}>
         <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
           <Pressable onPress={like}>
-            <AntDesign
-              name="heart"
-              size={45}
-              color={'red'}
-              style={{paddingRight: 4}}></AntDesign>
+            {title === 'awdawd' && (
+              <AntDesign
+                name="heart"
+                size={45}
+                color={'red'}
+                style={{paddingRight: 4}}></AntDesign>
+            )}
           </Pressable>
-          <Pressable onPress={comment}>
+          <Pressable onPress={() => setTitle('awdaw')}>
             <FontAwesome name="comment" size={45} color={'gray'}></FontAwesome>
           </Pressable>
         </View>
         <View>
-          <Pressable onPress={share}>
+          <Pressable
+            onPress={() => {
+              (commend.title = 'awda'),
+                setCommend({...commend, title: 'awdaw'});
+            }}>
             <FontAwesome name="share" size={45} color={'gray'}></FontAwesome>
           </Pressable>
         </View>
@@ -81,12 +97,10 @@ export const MyPressable = () => {
       <View
         style={{
           backgroundColor: 'lightgray',
-          height: '40%',
-          width: '100%',
           flex: 1,
           alignItems: 'center',
           borderRadius: 30,
-          marginTop: 10,
+          margin: 30,
         }}>
         <Text
           style={{
@@ -94,7 +108,7 @@ export const MyPressable = () => {
             color: 'black',
             fontWeight: 'bold',
           }}>
-          --Comments--
+          {commend.title}
         </Text>
       </View>
     </Pressable>

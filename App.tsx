@@ -15,6 +15,7 @@ import {
   Text,
   useColorScheme,
   View,
+  Alert,
 } from 'react-native';
 
 import {
@@ -28,6 +29,7 @@ import {MyPressable} from './src/components/easyPressable';
 import {MySroll} from './src/components/easyScroll';
 import {MyButton} from './src/components/button1';
 import {MyButton2} from './src/components/button2';
+import {soto} from './src/types/MyPressable.intefrace';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -65,9 +67,24 @@ function App(): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  const onPress = (title: string) => {
+    Alert.alert(title, 'Nu mai apasa frumosule', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+  };
 
-  return <MyButton2></MyButton2>;
+  return <MyPressable item={obj} onPress={onPress}></MyPressable>;
 }
+
+const obj = {
+  name: 'sasdaw',
+  image: require('./src/assets/pizza.jpg'),
+};
 
 const styles = StyleSheet.create({
   sectionContainer: {
