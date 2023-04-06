@@ -9,8 +9,6 @@ import {
   Alert,
   Button,
 } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {soto} from '../types/MyPressable.intefrace';
 import {useState} from 'react';
 interface Props {
@@ -60,7 +58,7 @@ export const MyPressable = (props: Props) => {
         </Text>
       </View>
       <Pressable
-        onPress={() => props.onPress('titlusdsadasd')}
+        onPress={() => props.onPress('taci ma')}
         style={{backgroundColor: 'blue', height: '50%', width: '100%'}}>
         <Image
           source={props.item.image}
@@ -72,25 +70,20 @@ export const MyPressable = (props: Props) => {
         }}>
         <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
           <Pressable onPress={like}>
-            {title === 'awdawd' && (
-              <AntDesign
-                name="heart"
-                size={45}
-                color={'red'}
-                style={{paddingRight: 4}}></AntDesign>
-            )}
+              <View style={{backgroundColor:'red',width:50,height:50}}></View>
           </Pressable>
-          <Pressable onPress={() => setTitle('awdaw')}>
-            <FontAwesome name="comment" size={45} color={'gray'}></FontAwesome>
+          <Pressable onPress={() => setTitle('434343')}>
+            <View style={{backgroundColor:'blue',width:50,height:50}}></View>
           </Pressable>
         </View>
         <View>
           <Pressable
             onPress={() => {
               (commend.title = 'awda'),
-                setCommend({...commend, title: 'awdaw'});
+                setCommend({...commend, title: 'awdadedd'});
             }}>
-            <FontAwesome name="share" size={45} color={'gray'}></FontAwesome>
+              <View style={{backgroundColor:'red'}}></View>
+              <View style={{backgroundColor:'magenta',width:50,height:50}}></View>
           </Pressable>
         </View>
       </View>
