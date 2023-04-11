@@ -11,8 +11,6 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export const MyButton2 = () => {
   const [pressed, setPressed] = useState(false);

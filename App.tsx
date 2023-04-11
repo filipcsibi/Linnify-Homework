@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -32,64 +32,64 @@ import {MyPressable} from './src/components/easyPressable';
 import {MySroll} from './src/components/easyScroll';
 import {MyButton} from './src/components/button1';
 import {MyButton2} from './src/components/button2';
-import { MyMathButton } from './src/components/MathButton';
-import {soto} from './src/types/MyPressable.intefrace';
-const data:soto[]=[
-{
-  image:require('./src/assets/burger.jpg'),
-  name:'titlusmecher'
-},
-{
-  image:require('./src/assets/pizza.jpg'),
-  name:'titluprost'
-},
-{
-  image:require('./src/assets/pizza.jpg'),
-  name:'r34'
-},
-{
-  image:require('./src/assets/pizza.jpg'),
-  name:'titlupros4r34r3t'
-},
-{
-  image:require('./src/assets/pizza.jpg'),
-  name:'titlupfefferost'
-},
-{
-  image:require('./src/assets/pizza.jpg'),
-  name:'titlu43fee3prost'
-}
-]
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import {MyMathButton} from './src/components/MathButton';
+import {soto, soto2} from './src/types/MyPressable.intefrace';
+import {MyList} from './src/components/easyFlatList';
+import {MyLogin} from './src/components/easyLogin';
+const data: soto[] = [
+  {
+    image: require('./src/assets/burger.jpg'),
+    name: 'titlusmecher',
+  },
+  {
+    image: require('./src/assets/pizza.jpg'),
+    name: 'titluprost',
+  },
+  {
+    image: require('./src/assets/pizza.jpg'),
+    name: 'r34',
+  },
+  {
+    image: require('./src/assets/pizza.jpg'),
+    name: 'titlupros4r34r3t',
+  },
+  {
+    image: require('./src/assets/pizza.jpg'),
+    name: 'titlupfefferost',
+  },
+  {
+    image: require('./src/assets/pizza.jpg'),
+    name: 'titlu43fee3prost',
+  },
+];
+const date: soto2[] = [
+  {
+    image: require('./src/assets/1.jpg'),
+    name: 'France',
+    description:
+      'France , officially the French Republic , is a country located primarily in Western Europe. ',
+    img: require('./src/assets/like.png'),
+  },
+  {
+    image: require('./src/assets/2.jpg'),
+    name: 'Budapest',
+    description: 'Budapest is the capital and most populous city of Hungary.',
+    img: require('./src/assets/like.png'),
+  },
+  {
+    image: require('./src/assets/3.jpg'),
+    name: 'Berlin',
+    description:
+      'Berlin is the capital and largest city of Germany by both area',
+    img: require('./src/assets/like.png'),
+  },
+  {
+    image: require('./src/assets/4.jpg'),
+    name: 'NewYork',
+    description: 'New York is the most populous city in the United States.',
+    img: require('./src/assets/like.png'),
+  },
+];
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -108,50 +108,124 @@ function App(): JSX.Element {
     ]);
   };
 
-  const renderItem = ({item}: ListRenderItemInfo<soto>)=> <MyPressable item={item} onPress={() => onPress(item.name)}/>
+  const renderItem = ({item}: ListRenderItemInfo<soto>) => (
+    <MyPressable item={item} onPress={() => onPress(item.name)} />
+  );
   const [sum, setSum] = useState(0);
+  const [imaj, setImaj] = useState('./src/assets/like.png');
 
+  const [favorite, setFavorite] = useState(0);
+
+  const addFavorite = () => {
+    setFavorite(favorite + 1);
+  };
+  const removeFavorite = () => {
+    setFavorite(favorite - 1);
+  };
+  const BookListItem = ({item}: ListRenderItemInfo<soto2>) => (
+    <MyList item={item} onPress={addFavorite}></MyList>
+  );
   const onAddToSum = (val: number) => {
-    setSum(sum+val)
-  }
-  const reset=()=>{
-    setSum(0)
-  }
+    setSum(sum + val);
+  };
+  const reset = () => {
+    setSum(0);
+  };
 
   return (
-  <SafeAreaView style={{flex:1,flexDirection:'column',top:'30%'}}>
-    <View style={styles.butonindexare}>
-      <MyMathButton nume={1} onPress={onAddToSum}></MyMathButton>
-      <MyMathButton nume={2} onPress={onAddToSum}></MyMathButton>
-          </View>
-    <View style={{alignItems:'center'}}>
-      <View style={{backgroundColor:'white',width:50,height:50 ,justifyContent:'center',alignItems:'center'}}>
-        <Text style={{color:'black',fontSize:30}}>{sum}</Text>
-      </View>
-    </View>
-    <View style={styles.butonindexare}>
-    <MyMathButton nume={3} onPress={onAddToSum}></MyMathButton>
-    <MyMathButton nume={4} onPress={onAddToSum}></MyMathButton>
+    <MyLogin></MyLogin>
+    // <FlatList
+    //   style={{backgroundColor: 'lightgray'}}
+    //   data={date}
+    //   renderItem={BookListItem}
+    //   ListHeaderComponent={
+    //     <View style={{margin: 30}}>
+    //       <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
+    //         My Posts:
+    //       </Text>
+    //     </View>
+    //   }
+    //   ListEmptyComponent={<Text>NULL</Text>}
+    //   ListHeaderComponentStyle={{
+    //     backgroundColor: 'white',
+    //   }}
+    //   ListFooterComponentStyle={{
+    //     backgroundColor: 'white',
+    //   }}
+    //   ListFooterComponent={
+    //     <View
+    //       style={{
+    //         margin: 30,
+    //         flex: 1,
+    //         flexDirection: 'row',
+    //         alignItems: 'center',
+    //         justifyContent: 'space-between',
+    //       }}>
+    //       <View>
+    //         <Text style={{fontSize: 20, color: 'black', fontWeight: 'bold'}}>
+    //           Favorites:
+    //         </Text>
+    //       </View>
+    //       <View>
+    //         <Text style={{fontSize: 30, color: 'green'}}>{favorite}</Text>
+    //       </View>
+    //     </View>
+    //   }
+    // />
 
-    </View>
-    <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
-    <Pressable style={{backgroundColor:'red',width:80,height:60,justifyContent:'center',marginTop:20,borderRadius:20}} onPress={reset}>
-      <Text style={{fontSize:20}}> RESET</Text>
+    //aa
 
-    </Pressable>
-</View>
-  {/* <FlatList
-  data={data}
-  renderItem={renderItem}
-  keyExtractor={(item:soto)=>item.name}
-  ListEmptyComponent={<View style={{top:100}}><Text>NIMIC</Text></View>}
-  ListFooterComponent={<View style={{backgroundColor:'blue'}}><Text>FOOTER </Text></View>}
-  ListHeaderComponent={<View style={{backgroundColor:'red'}}><Text>HEADER</Text></View>}
-  ItemSeparatorComponent={()=><View style={{backgroundColor:'magenta'}}><Text>ssssssssdsdsddds</Text></View>}
-  /> */}
-  </SafeAreaView>
-)
+    //<MyList></MyList>
+    //   <SafeAreaView style={{flex:1,flexDirection:'column',top:'30%'}}>
+    //     <View style={styles.butonindexare}>
+    //       <MyMathButton nume={1} onPress={onAddToSum}></MyMathButton>
+    //       <MyMathButton nume={2} onPress={onAddToSum}></MyMathButton>
+    //           </View>
+    //     <View style={{alignItems:'center'}}>
+    //       <View style={{backgroundColor:'white',width:50,height:50 ,justifyContent:'center',alignItems:'center'}}>
+    //         <Text style={{color:'black',fontSize:30}}>{sum}</Text>
+    //       </View>
+    //     </View>
+    //     <View style={styles.butonindexare}>
+    //     <MyMathButton nume={3} onPress={onAddToSum}></MyMathButton>
+    //     <MyMathButton nume={4} onPress={onAddToSum}></MyMathButton>
 
+    //     </View>
+    //     <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+    //     <Pressable style={{backgroundColor:'red',width:80,height:60,justifyContent:'center',marginTop:20,borderRadius:20}} onPress={reset}>
+    //       <Text style={{fontSize:20}}> RESET</Text>
+
+    //     </Pressable>
+    // </View>
+
+    //<MyList item={date[2]}></MyList>
+    // <FlatList
+    //   data={data}
+    //   renderItem={renderItem}
+    //   keyExtractor={(item: soto) => item.name}
+    //   ListEmptyComponent={
+    //     <View style={{top: 100}}>
+    //       <Text>NIMIC</Text>
+    //     </View>
+    //   }
+    //   ListFooterComponent={
+    //     <View style={{backgroundColor: 'blue'}}>
+    //       <Text>FOOTER </Text>
+    //     </View>
+    //   }
+    //   ListHeaderComponent={
+    //     <View style={{backgroundColor: 'red'}}>
+    //       <Text>HEADER</Text>
+    //     </View>
+    //   }
+    //   ItemSeparatorComponent={() => (
+    //     <View style={{backgroundColor: 'magenta'}}>
+    //       <Text>ssssssssdsdsddds</Text>
+    //     </View>
+    //   )}
+    // />
+    //   </SafeAreaView>
+  );
 }
 
 const obj = {
@@ -159,12 +233,10 @@ const obj = {
   image: require('./src/assets/pizza.jpg'),
 };
 
-
 const styles = StyleSheet.create({
-  butonindexare:{
-    flexDirection:'row',
-    justifyContent:'space-evenly',
-    
+  butonindexare: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
   sectionContainer: {
     marginTop: 32,
