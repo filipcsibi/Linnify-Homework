@@ -14,15 +14,20 @@ import {soto2} from '../types/MyPressable.intefrace';
 import {useState} from 'react';
 interface props {
   item: soto2;
-  onPress: () => void;
+  onPress: (value:number) => void;
 }
 export const MyList = (dates: props) => {
-  const onPress = () => dates.onPress();
+  const onPress = () => dates.onPress(1);
+  const onPress2 = () => dates.onPress(-1);
   const [imaj, setImaj] = useState(require('../assets/like.png'));
   const unfilled = require('../assets/like.png');
   const like = () => {
     setImaj(require('../assets/heart.png'));
     onPress();
+  };
+  const unlike = () => {
+    setImaj(require('../assets/like.png'));
+    onPress2();
   };
   return (
     <View
@@ -49,7 +54,7 @@ export const MyList = (dates: props) => {
             }}>
             {dates.item.name}
           </Text>
-          <Pressable onPress={like}>
+          <Pressable onPress={imaj===unfilled ? like : unlike}>
             <Image
               source={imaj}
               style={{

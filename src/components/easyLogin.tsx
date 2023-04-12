@@ -14,8 +14,10 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-
-export const MyLogin = () => {
+interface Props{
+  onPress:()=>void;
+}
+export const MyLogin = (props:Props) => {
   const icoana = require('../assets/logo.jpeg');
   const eye = require('../assets/eye.png');
   const [inputValue, setInputValue] = useState('');
@@ -43,16 +45,17 @@ export const MyLogin = () => {
           alignItems: 'center',
         }}>
         <View style={{paddingTop: 30}}>
-          <Image source={icoana} style={{width: 100, height: 100}}></Image>
+          <Image source={icoana} style={{width: 100, height: 100,borderRadius:50}}></Image>
         </View>
         <View style={{width: '90%', paddingTop: 10}}>
-          <Text style={{}}>Email:</Text>
+          <Text style={{}} onPress={props.onPress}>Email:</Text>
           <TextInput
             keyboardType="email-address"
             onChangeText={handleEmailChange}
             style={{
               backgroundColor: 'lightgray',
               borderRadius: 10,
+              height:30
             }}></TextInput>
         </View>
         <View style={{width: '90%', paddingTop: 10}}>
@@ -67,8 +70,7 @@ export const MyLogin = () => {
             }}>
             <TextInput
               secureTextEntry={true}
-              style={{width: '90%'}}
-              keyboardType="visible-password"
+              style={{width: '90%',height:30}}
               onChangeText={handlePasswordChange}></TextInput>
             <Image
               source={eye}
