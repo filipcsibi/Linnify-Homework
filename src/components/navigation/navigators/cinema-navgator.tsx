@@ -1,4 +1,7 @@
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack';
 import {Text, View} from 'react-native';
 import {CinemaRouteProps, CinemaRoutes} from '../routes/cinema_routes';
 import {IslandNavigator} from './island-navigator';
@@ -9,7 +12,11 @@ import {MyMovieDetails} from '../../MovieDetails';
 const Cinema = createStackNavigator<CinemaRouteProps>();
 export const CinemaNavigator = () => {
   return (
-    <Cinema.Navigator screenOptions={{headerShown: false}}>
+    <Cinema.Navigator
+      screenOptions={{
+        headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
+      }}>
       <Cinema.Screen
         name={CinemaRoutes.Main}
         component={Frontez}></Cinema.Screen>

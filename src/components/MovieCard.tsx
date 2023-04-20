@@ -2,11 +2,19 @@ import {ImageBackground, StyleSheet, Text, View, Pressable} from 'react-native';
 import {QuestionIcon} from '../assets/icons';
 import {ArrowIcon} from '../assets/icons';
 import {moviedata} from '../types/MyPressable.intefrace';
+import {useMemo} from 'react';
 interface props {
   item: moviedata;
   onPress: () => void;
 }
 export const MyMovieCard = (data: props) => {
+  const text = useMemo(() => {
+    return (
+      <View style={{flex: 1}}>
+        <Text style={styles.title}>{data.item.title}</Text>
+      </View>
+    );
+  }, []);
   const movie = require('../assets/movie.jpg');
   return (
     <View style={styles.card}>
@@ -15,9 +23,7 @@ export const MyMovieCard = (data: props) => {
         style={styles.context}
         borderRadius={30}>
         <View style={styles.mainview}>
-          <View style={{flex: 1}}>
-            <Text style={styles.title}>{data.item.title}</Text>
-          </View>
+          {text}
           <View style={styles.details}>
             <View>
               <Text style={styles.time}>{data.item.time}</Text>

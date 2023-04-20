@@ -10,18 +10,23 @@ import {
 } from '../../../assets/icons';
 import {MyMovieList} from '../../MovieList';
 import {CinemaRoutes} from '../routes/cinema_routes';
+import {useEffect} from 'react';
 const Island = createBottomTabNavigator<IslandRoutesProps>();
+
 export const IslandNavigator = () => {
   const icon = require('../navigators/movieicon.png');
   const icon1 = require('../navigators/nr6.jpg');
   const icon2 = require('../navigators/nr5.jpg');
   const icon3 = require('../navigators/nr3.jpg');
-  const First = () => (
-    <Image source={icon1} style={{height: '105%', width: '100%'}}></Image>
-  );
+
+  const First = () => {
+    useEffect(() => {
+      console.log('asdaw');
+    }, []);
+    return <Image source={icon1} style={{height: '105%', width: '100%'}} />;
+  };
   const Second = () => <Image source={icon2} style={styles.a}></Image>;
   const Third = () => <Image source={icon3} style={styles.a}></Image>;
-
   return (
     <Island.Navigator
       screenOptions={({navigation, route}) => ({

@@ -237,3 +237,9 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+
+custom button tab bar, floating cum am la esu app, gasim in documentatie 3 butoane reale, 
+3 ecrane, numele ecranului pe mijloc, header cu o icoana de lista care ma aduce pe alt ecran cu lista noastra si cand 
+dam click pe un card sa ne duca pe alt ecran de details imagine text dinastea , trimitem obiectu cu parametru la asta 
+cu details

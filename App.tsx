@@ -45,12 +45,20 @@ import {CinemaNavigator} from './src/components/navigation/navigators/cinema-nav
 import {IslandNavigator} from './src/components/navigation/navigators/island-navigator';
 import {StartPage} from './src/components/beginning';
 import {MyMovieDetails} from './src/components/MovieDetails';
+import {LoginScreen} from './src/screens/loginscreen';
 
 function App(): JSX.Element {
+  const ab = () => {
+    console.log('hello');
+  };
   return (
-    <NavigationContainer>
-      <CinemaNavigator></CinemaNavigator>
-    </NavigationContainer>
+    // <SafeAreaView style={{flex: 1}}>
+    //   <NavigationContainer>
+    //     <CinemaNavigator></CinemaNavigator>
+    //   </NavigationContainer>
+    // </SafeAreaView>
+    //<MyLogin onPress={ab}></MyLogin>
+    <LoginScreen></LoginScreen>
   );
 }
 

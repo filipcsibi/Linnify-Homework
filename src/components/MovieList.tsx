@@ -7,6 +7,7 @@ import {
   CinemaRoutes,
 } from './navigation/routes/cinema_routes';
 import {StackScreenProps} from '@react-navigation/stack';
+import {useEffect} from 'react';
 const date: moviedata[] = [
   {
     image: require('../assets/movie.jpg'),
@@ -47,6 +48,9 @@ export const MyMovieList = ({
   const Navi = (item: moviedata) => {
     navigation.navigate(CinemaRoutes.Detailed, {...item});
   };
+  useEffect(() => {
+    console.log('aaa');
+  }, [Navi]);
   const renderItem = ({item}: ListRenderItemInfo<moviedata>) => (
     <MyMovieCard item={item} onPress={() => Navi(item)} />
   );
