@@ -10,7 +10,7 @@ const Stack = createStackNavigator<AppRouteProps>();
 
 export const AppNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{}}>
+    <Stack.Navigator>
       <Stack.Screen
         name={AppRoutes.Login}
         component={Login}
@@ -28,7 +28,7 @@ export const AppNavigator = () => {
             <Pressable
               onPress={() => navigation.goBack()}
               style={{
-                backgroundColor: 'green',
+                backgroundColor: 'yellow',
                 width: 50,
                 height: 50,
               }}></Pressable>

@@ -13,14 +13,13 @@ const Tab = createBottomTabNavigator<TabRoutesProps>();
 export const BottomTabs = () => {
   const navigation = useNavigation();
   return (
-    <Tab.Navigator screenOptions={{title: 'Jmekerie'}}>
+    <Tab.Navigator>
       <Tab.Screen
         name={TabRoutes.Home}
         component={() => (
           <View style={{backgroundColor: 'red', flex: 1}}></View>
         )}
         options={{
-          headerShown: false,
           tabBarLabel: 'HOME',
           tabBarIcon: () => <HomeIcon width={30} height={30} />,
         }}></Tab.Screen>
@@ -35,7 +34,7 @@ export const BottomTabs = () => {
                 height: 50,
               }}
               onPress={() => {
-                navigation.navigate(AppRoutes.Login);
+                // navigation.navigate(AppRoutes.Login);
               }}></Pressable>
           </View>
         )}

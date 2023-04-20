@@ -39,11 +39,17 @@ import {MyLogin} from './src/components/easyLogin';
 import {NavigationContainer} from '@react-navigation/native';
 import {AppNavigator} from './src/components/navigation/navigators/app-navigator';
 import {BottomTabs} from './src/components/navigation/navigators/tab-navigator';
+import {MyMovieList} from './src/components/MovieList';
+import {MyMovieCard} from './src/components/MovieCard';
+import {CinemaNavigator} from './src/components/navigation/navigators/cinema-navgator';
+import {IslandNavigator} from './src/components/navigation/navigators/island-navigator';
+import {StartPage} from './src/components/beginning';
+import {MyMovieDetails} from './src/components/MovieDetails';
 
 function App(): JSX.Element {
   return (
     <NavigationContainer>
-      <AppNavigator />
+      <CinemaNavigator></CinemaNavigator>
     </NavigationContainer>
   );
 }
