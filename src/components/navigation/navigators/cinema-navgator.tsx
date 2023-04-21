@@ -27,7 +27,7 @@ export const CinemaNavigator = () => {
 
       <Cinema.Screen
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitle: 'My Movie List',
           headerStyle: {height: 70},
           headerTitleStyle: {color: 'green'},

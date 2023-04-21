@@ -8,6 +8,7 @@ import {
 } from './navigation/routes/cinema_routes';
 import {StackScreenProps} from '@react-navigation/stack';
 import {useEffect} from 'react';
+import {MySearchBar} from './easySearchBar';
 const date: moviedata[] = [
   {
     image: require('../assets/movie.jpg'),
@@ -56,6 +57,8 @@ export const MyMovieList = ({
   );
   return (
     <FlatList
+      ListHeaderComponent={() => <MySearchBar />}
+      ListHeaderComponentStyle={{height: '10%'}}
       data={date}
       renderItem={renderItem}
       style={{backgroundColor: '#200423'}}

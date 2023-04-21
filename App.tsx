@@ -52,13 +52,13 @@ function App(): JSX.Element {
     console.log('hello');
   };
   return (
-    // <SafeAreaView style={{flex: 1}}>
-    //   <NavigationContainer>
-    //     <CinemaNavigator></CinemaNavigator>
-    //   </NavigationContainer>
-    // </SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
+      <NavigationContainer>
+        <CinemaNavigator></CinemaNavigator>
+      </NavigationContainer>
+    </SafeAreaView>
     //<MyLogin onPress={ab}></MyLogin>
-    <LoginScreen></LoginScreen>
+    //<LoginScreen></LoginScreen>
   );
 }
 

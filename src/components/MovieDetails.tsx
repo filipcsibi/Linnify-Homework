@@ -5,6 +5,7 @@ import {
   View,
   Image,
   StyleSheet,
+  Pressable,
 } from 'react-native';
 import {moviedata} from '../types/MyPressable.intefrace';
 import {StackScreenProps} from '@react-navigation/stack';
@@ -12,10 +13,18 @@ import {
   CinemaRouteProps,
   CinemaRoutes,
 } from './navigation/routes/cinema_routes';
-
+import {TextCompDetails} from './detailscomp';
+import {useRef, useState} from 'react';
+export interface TextCompDetailsRef {
+  changeTextBackground: (value: string) => void;
+}
 export const MyMovieDetails = (
   props: StackScreenProps<CinemaRouteProps, CinemaRoutes.Detailed>,
 ) => {
+  const textComponentRef = useRef<TextCompDetailsRef>(null);
+  const onPress = () => {
+    textComponentRef.current?.changeTextBackground('red');
+  };
   return (
     <View style={styles.main}>
       <View
@@ -23,22 +32,12 @@ export const MyMovieDetails = (
           maxHeight: '55%',
           maxWidth: '100%',
         }}>
-        <Image source={props.route.params.image} style={styles.one}></Image>
+        <Pressable onPress={onPress}>
+          <Image source={props.route.params.image} style={[styles.one]}></Image>
+        </Pressable>
       </View>
-      <View style={styles.two}>
-        <View style={{marginBottom: 5}}>
-          <Text style={styles.title}>{props.route.params.title}</Text>
-        </View>
-        <View>
-          <Text style={styles.three}>{props.route.params.type}</Text>
-        </View>
-        <View>
-          <Text style={styles.three}>Time:{props.route.params.time}</Text>
-        </View>
-        <View>
-          <Text style={styles.four}>{props.route.params.description}</Text>
-        </View>
-      </View>
+
+      <TextCompDetails ref={textComponentRef} {...props} />
     </View>
   );
 };
