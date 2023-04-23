@@ -9,7 +9,7 @@ import {
 import {StackScreenProps} from '@react-navigation/stack';
 import {useEffect} from 'react';
 import {MySearchBar} from './easySearchBar';
-const date: moviedata[] = [
+export const date: moviedata[] = [
   {
     image: require('../assets/movie.jpg'),
     title: 'The Shawshank Redemption',

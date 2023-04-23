@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from 'react';
 
-export interface T{
-    [key: string]: any
+export interface T {
+  [key: string]: any;
 }
 
-export const useDebounce = <T>(value: T, delay: number):T => {
+export const useDebounce = <T>(value: T, delay: number): T => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
-    const handler = setTimeout(() => setDebouncedValue(value), delay)
+    const handler = setTimeout(() => setDebouncedValue(value), delay);
     return () => clearTimeout(handler);
-    },[value, delay]
-  );
+  }, [value, delay]);
   return debouncedValue;
-}
+};

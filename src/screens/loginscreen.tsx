@@ -5,7 +5,7 @@ export interface LoginFormRef {
   getData: () => {email: string; password: string};
   setData: (val: string, val2: string) => void;
 }
-export const LoginScreen = () => {
+export const Abc = () => {
   const loginRef = useRef<LoginFormRef>(null);
   const onPress = () => {
     loginRef.current?.setData('red', 'bbb');

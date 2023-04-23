@@ -2,26 +2,35 @@ import {useEffect, useState} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 import {useDebounce} from '../hooks/use-debounce.hook';
 import {isNetworkOnline} from '../hooks/use-network-status.hook';
+import {useSearch} from '../hooks/use-search.hook';
+import {date} from './MovieList';
 
 export const MySearchBar = () => {
-  const [state, setState] = useState<string>('');
+  const [state, setState] = useState<string>('type');
 
-  const search = useDebounce(state, 1000);
+  const debouncer = useDebounce(state, 400);
+  const searcher = useSearch('Crime', date, debouncer);
+
   useEffect(() => {
-    console.log(search);
-  }, [search]);
+    console.log(debouncer); //MERGE DOAR CAND DAU CONTROL + S
+    console.log('----'); //MERGE DOAR CAND DAU CONTROL + S
+    console.log(searcher);
+  }, [debouncer]);
 
-  const ceva = isNetworkOnline();
-  console.log('asd', ceva);
+  // useEffect(() => {
+  //   console.log(debouncer);
+  // }, [debouncer]);
+
+  // const ceva = isNetworkOnline();
+  // console.log('asd', ceva);
+
   return (
     <View style={styles.main}>
       <View style={styles.a}>
         <TextInput
           style={styles.b}
           placeholder="Search"
-          onChangeText={setState}>
-          {state}
-        </TextInput>
+          value={state}></TextInput>
       </View>
     </View>
   );
