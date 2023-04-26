@@ -8,19 +8,21 @@ export const useSearch = <T>(
 ) => {
   const [searchResults, setSearchResults] = useState<T[]>([]);
 
-  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+  // const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   useEffect(() => {
     const key = setTimeout(() => {
       const results = items.filter((item: any) => {
-        return item[searchKey]
+        if (searchKey) {
+          return item[searchKey]
           .toUpperCase()
-          .includes(debouncedSearchTerm.toUpperCase());
+          .includes(searchTerm?.toUpperCase());
+        }
       });
       setSearchResults(results);
     }, 500);
     return () => clearTimeout(key);
-  }, [debouncedSearchTerm]);
+  }, [searchTerm]);
 
   return searchResults;
 };

@@ -9,6 +9,8 @@ import {
 import {StackScreenProps} from '@react-navigation/stack';
 import {useEffect} from 'react';
 import {MySearchBar} from './easySearchBar';
+import {MovieState, useMovieStore} from '../store/useMovieStore';
+import {MMKV} from 'react-native-mmkv';
 export const date: moviedata[] = [
   {
     image: require('../assets/movie.jpg'),
@@ -49,17 +51,37 @@ export const MyMovieList = ({
   const Navi = (item: moviedata) => {
     navigation.navigate(CinemaRoutes.Detailed, {...item});
   };
+  useEffect(() => {}, [Navi]);
+  // const renderItem = ({item}: ListRenderItemInfo<moviedata>) => (
+  //   <MyMovieCard item={item} onPress={() => Navi(item)} />
+  // );
+  const storage = new MMKV();
+
+  const {movies, setCurrentMovie} = useMovieStore((state: MovieState) => {
+    return {
+      movies: state.movies,
+      setCurrentMovie: state.setCurrentMovie,
+    };
+  });
   useEffect(() => {
-    console.log('aaa');
-  }, [Navi]);
+    storage.set('anykey', 'aa');
+  }, []);
+
   const renderItem = ({item}: ListRenderItemInfo<moviedata>) => (
-    <MyMovieCard item={item} onPress={() => Navi(item)} />
+    <MyMovieCard
+      item={item}
+      onPress={() => {
+        // setCurrentMovie(item);
+        Navi(item);
+      }}
+    />
   );
+
   return (
     <FlatList
       ListHeaderComponent={() => <MySearchBar />}
       ListHeaderComponentStyle={{height: '10%'}}
-      data={date}
+      data={movies}
       renderItem={renderItem}
       style={{backgroundColor: '#200423'}}
     />

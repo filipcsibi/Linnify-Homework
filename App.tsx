@@ -49,19 +49,20 @@ import {Abc} from './src/screens/loginscreen';
 import {MyPersonalInfo} from './src/components/PersonalInfo';
 import {MyNormalScreen} from './src/screens/normalscreen';
 import {MyImperativeScreen} from './src/screens/imperativescreen';
+import {MySearchBar} from './src/components/easySearchBar';
 function App(): JSX.Element {
   const ab = () => {
     console.log('hello');
   };
   return (
-    <MyImperativeScreen></MyImperativeScreen>
+    //<MyImperativeScreen></MyImperativeScreen>
     // <Abc></Abc>
     //<MyNormalScreen></MyNormalScreen>
-    // <SafeAreaView style={{flex: 1}}>
-    //   <NavigationContainer>
-    //     <CinemaNavigator></CinemaNavigator>
-    //   </NavigationContainer>
-    // </SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
+      <NavigationContainer>
+        <CinemaNavigator></CinemaNavigator>
+      </NavigationContainer>
+    </SafeAreaView>
     //<MyLogin onPress={ab}></MyLogin>
     //<LoginScreen></LoginScreen>
   );

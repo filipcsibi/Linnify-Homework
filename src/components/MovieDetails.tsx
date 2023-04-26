@@ -14,17 +14,29 @@ import {
   CinemaRoutes,
 } from './navigation/routes/cinema_routes';
 import {TextCompDetails} from './detailscomp';
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
+import {MovieState, useMovieStore} from '../store/useMovieStore';
+import {MMKV} from 'react-native-mmkv';
 export interface TextCompDetailsRef {
   changeTextBackground: (value: string) => void;
 }
 export const MyMovieDetails = (
   props: StackScreenProps<CinemaRouteProps, CinemaRoutes.Detailed>,
 ) => {
+  const storage = new MMKV();
   const textComponentRef = useRef<TextCompDetailsRef>(null);
   const onPress = () => {
     textComponentRef.current?.changeTextBackground('red');
   };
+
+  const {movie} = useMovieStore((state: MovieState) => {
+    return {movie: state.movie};
+  });
+
+  useEffect(() => {
+    const movie = storage.getString('anykey');
+    console.log(movie);
+  });
   return (
     <View style={styles.main}>
       <View
@@ -33,7 +45,9 @@ export const MyMovieDetails = (
           maxWidth: '100%',
         }}>
         <Pressable onPress={onPress}>
-          <Image source={props.route.params.image} style={[styles.one]}></Image>
+          {movie?.image && (
+            <Image source={movie.image} style={[styles.one]}></Image>
+          )}
         </Pressable>
       </View>
 

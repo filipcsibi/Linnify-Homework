@@ -6,16 +6,16 @@ import {useSearch} from '../hooks/use-search.hook';
 import {date} from './MovieList';
 
 export const MySearchBar = () => {
-  const [state, setState] = useState<string>('type');
+  const [state, setState] = useState<string>('');
 
-  const debouncer = useDebounce(state, 400);
-  const searcher = useSearch('Crime', date, debouncer);
+  // const debouncer = useDebounce(state, 400);
+  // const searcher = useSearch('Oprhan: First Kill', date, state);
 
-  useEffect(() => {
-    console.log(debouncer); //MERGE DOAR CAND DAU CONTROL + S
-    console.log('----'); //MERGE DOAR CAND DAU CONTROL + S
-    console.log(searcher);
-  }, [debouncer]);
+  // useEffect(() => {
+  //   console.log(debouncer); //MERGE DOAR CAND DAU CONTROL + S
+  //   console.log('----'); //MERGE DOAR CAND DAU CONTROL + S
+  //   console.log(searcher);
+  // }, [debouncer]);
 
   // useEffect(() => {
   //   console.log(debouncer);
@@ -28,6 +28,7 @@ export const MySearchBar = () => {
     <View style={styles.main}>
       <View style={styles.a}>
         <TextInput
+          onChangeText={setState}
           style={styles.b}
           placeholder="Search"
           value={state}></TextInput>

@@ -18,7 +18,7 @@ export interface PersonalScreenRef {
     firstName: string;
     lastName: string;
   };
-  setBackground: (val: string) => void;
+  setBackground?: (val: string) => void;
   setBackground2: (val: string) => void;
 }
 export interface StudentScreenRef {
@@ -37,7 +37,8 @@ export const MyImperativeScreen = () => {
 
   const onPress = () => {
     if (personalScreenRef.current?.getData().firstName === '') {
-      personalScreenRef.current?.setBackground('red');
+      personalScreenRef.current?.setBackground &&
+        personalScreenRef.current?.setBackground('red');
       console.log('please fill in the first name');
     }
     if (personalScreenRef.current?.getData().lastName === '') {
