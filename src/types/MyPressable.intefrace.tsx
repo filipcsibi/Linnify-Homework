@@ -9,9 +9,10 @@ export interface soto2 {
   img: number;
 }
 export interface moviedata {
-  image: number;
-  title: string;
-  time: string;
-  type: string;
+  image: string;
+  name: string;
+  time?: string;
+  type?: string;
   description: string;
+  id: number;
 }

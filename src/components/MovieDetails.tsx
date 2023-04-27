@@ -33,6 +33,7 @@ export const MyMovieDetails = (
     return {movie: state.movie};
   });
 
+  console.log('adsd');
   useEffect(() => {
     const movie = storage.getString('anykey');
     console.log(movie);
@@ -46,7 +47,7 @@ export const MyMovieDetails = (
         }}>
         <Pressable onPress={onPress}>
           {movie?.image && (
-            <Image source={movie.image} style={[styles.one]}></Image>
+            <Image source={{uri: movie?.image}} style={[styles.one]}></Image>
           )}
         </Pressable>
       </View>

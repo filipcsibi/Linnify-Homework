@@ -11,7 +11,7 @@ export const MyMovieCard = (data: props) => {
   const text = useMemo(() => {
     return (
       <View style={{flex: 1}}>
-        <Text style={styles.title}>{data.item.title}</Text>
+        <Text style={styles.title}>{data.item.name}</Text>
       </View>
     );
   }, []);
@@ -19,7 +19,7 @@ export const MyMovieCard = (data: props) => {
   return (
     <View style={styles.card}>
       <ImageBackground
-        source={data.item.image}
+        source={{uri: data.item.image}}
         style={styles.context}
         borderRadius={30}>
         <View style={styles.mainview}>

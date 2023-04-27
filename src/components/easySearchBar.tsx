@@ -39,6 +39,7 @@ export const MySearchBar = () => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
+    height: 50,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
@@ -46,7 +47,6 @@ const styles = StyleSheet.create({
   a: {
     backgroundColor: 'white',
     width: '90%',
-    height: '40%',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'gray',
@@ -54,8 +54,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   b: {
-    width: '90%',
-    height: '100%',
     fontSize: 20,
     fontWeight: 'bold',
     color: 'gray',

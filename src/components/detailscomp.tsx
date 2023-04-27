@@ -24,7 +24,7 @@ export const TextCompDetails = forwardRef(
     return (
       <View style={[styles.two, {backgroundColor: color}]}>
         <View style={{marginBottom: 5}}>
-          <Text style={styles.title}>{props.route.params.title}</Text>
+          <Text style={styles.title}>{props.route.params.name}</Text>
         </View>
         <View>
           <Text style={styles.three}>{props.route.params.type}</Text>
